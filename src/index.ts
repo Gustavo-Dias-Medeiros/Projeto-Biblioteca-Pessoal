@@ -26,3 +26,47 @@ function exibirBiblioteca(): void {
 }
 
 exibirBiblioteca();
+
+function adicionarLivro(titulo: string, autor: string, ano: number, numeroPaginas: number): void {
+    if (numeroPaginas <= 0) {
+        console.log("Erro: AS páginas devem possuir valores positivos."); // Não faz sentido incluir erro se a data for negativa, o livro de Platão é de -380. O erro é para o número de páginas, que não pode ser negativo ou zero.
+        return;
+    }
+
+    titulos.push(titulo);
+    autores.push(autor);
+    anos.push(ano);
+    paginas.push(numeroPaginas); // Nessa etapa o push indicava erro: "Property 'push' does not exist on type 'number'.", então converti paginas para numeroPaginas (essa correção foi feita pelo copilot), adcionarei a justificativa no README.md
+    lido.push(false);       // Se eu adicionar um livro, ele começa como não lido
+    avaliacoes.push(0);    // E a avaliação começa como 0, já que o livro ainda não foi lido
+    
+    console.log(`O Livro "${titulo}" foi adicionado com sucesso!`);
+}
+
+function removerLivro(indice: number): void {
+    if (indice < 0 || indice >= titulos.length) { // O indice não pode ser negativo e nem maior ou igual ao número de livros na biblioteca
+        console.log("Erro: Índice inválido.");
+        return;
+    }
+
+    const removido = titulos[indice]; 
+    
+    titulos.splice(indice, 1);
+    autores.splice(indice, 1);
+    anos.splice(indice, 1);
+    paginas.splice(indice, 1);
+    lido.splice(indice, 1);
+    avaliacoes.splice(indice, 1);
+
+    console.log(`O Livro "${removido}" foi removido com sucesso!`);
+}
+
+console.log("\n===Testando Cadastro e Remoção===");
+
+adicionarLivro("A Carta a Meneceu", "Epicuro", -341, 51);
+
+adicionarLivro("Fundamentos da Metafísica dos Costumes", "Immanuel Kant", 1785, 432);
+
+removerLivro(3); // Remove "Mundo de Sofia" 
+
+exibirBiblioteca(); // Exibe a biblioteca atualizada após as adições e remoção; adciona a carta a Meneceu e os fundamentos da metafísica dos costumes, e remove o mundo de Sofia.
