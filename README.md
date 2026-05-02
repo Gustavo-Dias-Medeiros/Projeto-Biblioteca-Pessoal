@@ -33,3 +33,10 @@ Etapa 6 — Estatísticas
 6.1 Nessa etapa foi feita a implementação das estatísticas, sendo elas: Total de livros, Livros lidos, Media das avaliacoes, Livro melhor avaliado e Total de paginas lidas.
 6.2 Foi feito o uso de filter e reduce.
 6.3 Foi usado ToFixed.
+
+Etapa 7 — Classificação por década
+
+7.1 Nessa etapa foi feito a adesão de um filto que exibe o livro de acordo com a Década.
+7.2 Para tornar mais dinâmico o uso antes de começar adicionei o livro "O Alienista" de Machado de Assis, pois esse livro foi publicado no ano de 1882 ele foi adicionado para ficar junto com o livro "Memórias Póstumas de Brás Cubas" livro que também foi publicado por Machado de Assis, todavia foi publicado no ano de 1881, o que põe ambos na mesma década.
+7.3 O sistema usa um código simples de Math.floor, no qual ele pega o ano em que a obra foi publicada e divide por 10 sendo assim, se o ano de publicação da obra foi 1881 => 1881/10 = 188,1 que é arredondado para 188, posteriormente ele é multiplicado por 10 novamente e vai para 1880, sendo assim obras de 1882 trabalham com a mesma lógica e por isso são colocadas na mesma década.
+7.4 Pelo fato de ser utilizado o termo floor, mesmo o ano sendo 1889 ele se será "arredondado" para 1880.

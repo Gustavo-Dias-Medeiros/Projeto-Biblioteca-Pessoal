@@ -214,3 +214,32 @@ function totalPaginasLidas(): number {
 }
 
 console.log("Total de páginas lidas:", totalPaginasLidas());
+
+//Etapa 7 — Classificação por década
+
+adicionarLivro("O Alienista", "Machado de Assis", 1882, 128);
+
+function exibirPorDecada(): void {
+    console.log("\n=== BIBLIOTECA POR DÉCADA ===");
+
+    // Pega as décadas únicas
+    const decadasUnicas = [...new Set(anos.map(ano => Math.floor(ano! / 10) * 10))];
+    decadasUnicas.sort((a, b) => a - b);
+
+    // Percorre por cada década
+    decadasUnicas.forEach(decada => {
+        console.log(`${decada}s:`); // Exibe o cabeçalho da década
+
+        // Filtra os livros dessa década
+        const livrosDaDecada = titulos.filter((_, i) => {
+            const decadaDoLivro = Math.floor(anos[i]! / 10) * 10;
+            return decadaDoLivro === decada;
+        });
+
+        livrosDaDecada.forEach(titulo => {
+            console.log(`  - ${titulo}`);
+        });
+    });
+}
+
+exibirPorDecada();
