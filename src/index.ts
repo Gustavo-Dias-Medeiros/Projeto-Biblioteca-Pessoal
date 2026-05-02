@@ -40,7 +40,7 @@ function adicionarLivro(titulo: string, autor: string, ano: number, numeroPagina
     titulos.push(titulo);
     autores.push(autor);
     anos.push(ano);
-    paginas.push(numeroPaginas); // Nessa etapa o push indicava erro: "Property 'push' does not exist on type 'number'.", então converti paginas para numeroPaginas (essa correção foi feita pelo copilot), adcionarei a justificativa no README.md
+    paginas.push(numeroPaginas); // Nessa etapa o push indicava erro: "Property 'push' does not exist on type 'number'.", então converti paginas para numeroPaginas (essa correção foi feita pelo copilot)
     lido.push(false);       // Se eu adicionar um livro, ele começa como não lido
     avaliacoes.push(0);    // E a avaliação começa como 0, já que o livro ainda não foi lido
     
@@ -161,3 +161,56 @@ console.log("Lidos:", listarLidos());
 console.log("Pendentes:", listarPendentes());
 
 exibirBiblioteca();
+
+//Etapa 6 — Estatísticas
+
+function totalLivros(): number {
+    return titulos.length;
+}
+
+console.log("\nTotal de livros:", totalLivros());
+
+function totalLidos(): number {
+    return lido.filter(status => status).length;
+}
+
+function percentualLidos(): number {
+    if (totalLivros() === 0) return 0;
+    const percentual = (totalLidos() / totalLivros()) * 100;
+    return Number(percentual.toFixed(2));
+}
+
+console.log("Total de livros lidos:", totalLidos() + ` (${percentualLidos()}%)`);
+
+function mediaAvaliacoes(): number {
+    const notasLidos = avaliacoes.filter((_, i) => lido[i]);
+    
+    if (notasLidos.length === 0) return 0;
+
+    const soma = notasLidos.reduce((acumulador, nota) => acumulador + nota, 0);
+    return Number((soma / notasLidos.length).toFixed(2));
+}
+
+console.log("Média das avaliações:", mediaAvaliacoes());
+
+
+function livroMaiorAvaliacao(): string {
+    if (titulos.length === 0) return "Nenhum livro cadastrado";
+
+    const indiceDoMelhor = avaliacoes.reduce((maiorIndiceAteAgora, notaAtual, indiceAtual) => {
+        const notaMaiorAteAgora = avaliacoes[maiorIndiceAteAgora]!;
+        
+        return notaAtual > notaMaiorAteAgora ? indiceAtual : maiorIndiceAteAgora;
+    }, 0);
+    return titulos[indiceDoMelhor] ?? "Livro não encontrado";
+}
+
+console.log("Livro com maior avaliação:", livroMaiorAvaliacao());
+
+function totalPaginasLidas(): number {
+    return paginas
+        .filter((_, i) => lido[i]) // Filtra páginas apenas de livros lidos
+        .reduce((acc, pag) => acc + pag, 0); // Soma as páginas
+}
+
+console.log("Total de páginas lidas:", totalPaginasLidas());

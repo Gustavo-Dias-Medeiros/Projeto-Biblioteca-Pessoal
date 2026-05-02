@@ -27,3 +27,9 @@ Etapa 5 — Marcar como lido
 5.1 Nessa etapa foi feita a devida implementação de marcar como lido os títulos e as respectivas avaliações, na ementa da atividade é pedido que a avaliação fosse feita com if ou switch, optei por seguir com if. Primeiro é inserido o índice do livro e é verificado se o indice apontado é correto, e por fim você pode adicionar a nota ao lado. Esse comando pode não só alterar aqueles livros que estavam pendentes para lidos e com nota, como também pode alterar livros que já haviam sido lidos.
 5.2 Além disso foi implementada uma lista que é responsável por mostrar quais livros foram lidos e quais permanecem pendentes.
 5.3 Por fim, antes da etapa 5 começar foi inserido novamente o comando exibirBiblioteca para mostrar antes de adicionar novos livros como estava o seu histórico de leitura.
+
+Etapa 6 — Estatísticas
+
+6.1 Nessa etapa foi feita a implementação das estatísticas, sendo elas: Total de livros, Livros lidos, Media das avaliacoes, Livro melhor avaliado e Total de paginas lidas.
+6.2 Foi feito o uso de filter e reduce.
+6.3 Foi usado ToFixed.
