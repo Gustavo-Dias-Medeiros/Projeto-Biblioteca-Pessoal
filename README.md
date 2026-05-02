@@ -45,3 +45,7 @@ Etapa 7 — Classificação por década
 Etapa 8 — Demonstração final
 
 8.1 Nessa etapa foi feita uma interface mais arrojada para o projeto.
+8.2 Executar com "npm run dev"
+
+Gustavo Dias Medeiros
+1050482523023
