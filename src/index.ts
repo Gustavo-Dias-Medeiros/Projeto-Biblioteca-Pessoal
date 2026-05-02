@@ -151,7 +151,7 @@ function listarPendentes(): string[] {
     return titulos.filter((_, i) => !lido[i]);
 }
 
-console.log("\n--- TESTE ETAPA 5 ---");
+console.log("\n--- Teste de Marcar como lido e avaliação ---");
 
 marcarComoLido(2, 5);
 
@@ -218,6 +218,7 @@ console.log("Total de páginas lidas:", totalPaginasLidas());
 //Etapa 7 — Classificação por década
 
 adicionarLivro("O Alienista", "Machado de Assis", 1882, 128);
+exibirBiblioteca();
 
 function exibirPorDecada(): void {
     console.log("\n=== BIBLIOTECA POR DÉCADA ===");
@@ -243,3 +244,34 @@ function exibirPorDecada(): void {
 }
 
 exibirPorDecada();
+
+console.log("\nTotal de livros:", totalLivros());
+console.log("Total de livros lidos:", totalLidos() + ` (${percentualLidos()}%)`);
+console.log("Média das avaliações:", mediaAvaliacoes());
+console.log("Livro com maior avaliação:", livroMaiorAvaliacao());
+console.log("Total de páginas lidas:", totalPaginasLidas());
+
+//Etapa 8 — Demonstração final
+
+
+
+function executarDemonstracao() {
+    console.clear();
+  
+    console.log("\n========= MINHA BIBLIOTECA =========");
+    exibirBiblioteca();
+
+  
+    console.log("\n========= ESTATÍSTICAS =========");
+    console.log(`Total de Livros: ${totalLivros()}`);
+    console.log(`Livros Lidos: ${totalLidos()} (${percentualLidos()}%)`);
+    console.log(`Média de Avaliações: ${mediaAvaliacoes()}`);
+    console.log(`Total de Páginas Lidas: ${totalPaginasLidas()}`);
+    console.log(`Livro Destaque: ${livroMaiorAvaliacao()}`);
+
+
+    exibirPorDecada();
+}
+
+// Chame a função para que ela execute ao rodar 'npm run dev'
+executarDemonstracao();
