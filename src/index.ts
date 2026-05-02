@@ -1,3 +1,5 @@
+//Etapa 2 - Dados e exibição: 
+
 const titulos: string[] = [];
 const autores: string[] = [];
 const anos: number[] = [];
@@ -26,6 +28,8 @@ function exibirBiblioteca(): void {
 }
 
 exibirBiblioteca();
+
+//Etapa 3 - Cadastro e Remoção:
 
 function adicionarLivro(titulo: string, autor: string, ano: number, numeroPaginas: number): void {
     if (numeroPaginas <= 0) {
@@ -73,6 +77,8 @@ removerLivro(3); // Remove "Mundo de Sofia"
 
 exibirBiblioteca(); // Exibe a biblioteca atualizada após as adições e remoção; adciona a carta a Meneceu e os fundamentos da metafísica dos costumes, e remove o mundo de Sofia.
 
+//Etapa 4 - Busca e Filtros:
+
 function buscarPorTitulo(termo: string): number[] {
     const indicesEncontrados: number[] = [];
     const termoMinusculo = termo.toLowerCase();
@@ -112,3 +118,46 @@ console.log(`\nLivros de ${autorPesquisado}:`);
 livrosDoAutor.forEach(titulo => {
     console.log(`- ${titulo}`);
 });
+
+console.log("\n\nLidos:", listarLidos());
+console.log("\nPendentes:", listarPendentes());
+
+//Etapa 5 — Marcar como lido
+
+function marcarComoLido(indice: number, avaliacao: number): void {
+    if (indice < 0 || indice >= titulos.length) {
+        console.log("Erro: Livro não encontrado.");
+        return;
+    }
+
+    if (avaliacao < 1 || avaliacao > 5) {
+        console.log("Erro: A avaliação deve ser de 1 a 5.");
+        return;
+    }
+
+    lido[indice] = true;
+    avaliacoes[indice] = avaliacao;
+
+    console.log(`Sucesso! "${titulos[indice]}" marcado como lido com nota ${avaliacao}.`);
+}
+
+function listarLidos(): string[] {
+    // Filtra os títulos baseando-se no valor 'true' 
+    return titulos.filter((_, i) => lido[i]);
+}
+
+function listarPendentes(): string[] {
+    // Filtra os títulos baseando-se no valor 'false'
+    return titulos.filter((_, i) => !lido[i]);
+}
+
+console.log("\n--- TESTE ETAPA 5 ---");
+
+marcarComoLido(2, 5);
+
+marcarComoLido(4, 3);
+
+console.log("Lidos:", listarLidos());
+console.log("Pendentes:", listarPendentes());
+
+exibirBiblioteca();
