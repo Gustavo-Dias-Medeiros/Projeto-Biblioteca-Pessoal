@@ -14,5 +14,10 @@ Etapa 2 - Dados e exibição:
 Etapa 3 - Cadastro e Remoção:
 
 3.1 Nessa etapa foi implementado as funções de adicionar livros e remover livros.
-3.2 A validação das entradas foi alterada, pois como eu havia dito dentro do código livros como "A República" de Platão e até "A Carta a Meneceu" de Epicuro, livro que foi adicionado posteriormente são livros que as publicações são datas como antes de cristo, então a minha verificação prevê que o número de páginas não pode ser menor ou igual a zero, mas o ano de publicação pode ser menor, maior ou igual a zero, afinal seria incoerente tendo em vista que dentro do próprio código há livros que datam a publicação como antes de cristo.
+3.2 A validação das entradas foi alterada, pois como eu havia dito dentro do código livros como "A República" de Platão e até "A Carta a Meneceu" de Epicuro, livro que foi adicionado posteriormente são livros que as publicações são datatas como antes de cristo, então a minha verificação prevê que o número de páginas não pode ser menor ou igual a zero, mas o ano de publicação pode ser menor, maior ou igual a zero, afinal seria incoerente tendo em vista que dentro do próprio código há livros que datam a publicação como antes de cristo.
 3.3 No final foi testado a remoção e adição de livros, removendo "Mundo de Sofia" e adicionando "A Carta a Meneceu" e "Fundamentos da Metafísica dos Costumes".
+
+Etapa 4 - Busca e Filtros:
+
+4.1 Nessa etapa foi implementado a busca por títulos, ou seja um setor de busca de livros que filtra com base no nome do livro, o exemplo que aparece no commit filtrou pela letra "f", que resultou nos livros "Convite à Filosofia" e "Fundamentos da Metafísica dos Costumes", livros que possuem a letra "f" em seus títulos.
+4.2 Também foi aderido a busca por autor. Para tornar mais dinâmica a busca por autor eu decidi adicionar mais um livro a lista "A Apologia de Sócrates" de Platão, para que a busca por autores seja mais interativo.

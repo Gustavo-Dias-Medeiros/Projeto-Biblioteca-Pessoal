@@ -4,7 +4,7 @@ const anos: number[] = [];
 const paginas: number[] = [];
 const lido: boolean[] = [];
 const avaliacoes: number[] = [];
-//Criar as constantes para armazenar as informações pedidas
+//Cria as constantes para armazenar as informações pedidas
 
 function popularDadosIniciais(): void {
     titulos.push('A República', 'Meditações', 'O Príncipe', 'Mundo de Sofia', 'O Alquimista', 'Convite à Filosofia', 'Memórias Póstumas de Brás Cubas');
@@ -67,6 +67,48 @@ adicionarLivro("A Carta a Meneceu", "Epicuro", -341, 51);
 
 adicionarLivro("Fundamentos da Metafísica dos Costumes", "Immanuel Kant", 1785, 432);
 
+adicionarLivro("A Apologia de Sócrates", "Platão", -399, 64);
+
 removerLivro(3); // Remove "Mundo de Sofia" 
 
 exibirBiblioteca(); // Exibe a biblioteca atualizada após as adições e remoção; adciona a carta a Meneceu e os fundamentos da metafísica dos costumes, e remove o mundo de Sofia.
+
+function buscarPorTitulo(termo: string): number[] {
+    const indicesEncontrados: number[] = [];
+    const termoMinusculo = termo.toLowerCase();
+
+    titulos.forEach((titulo, indice) => {
+        if (titulo.toLowerCase().includes(termoMinusculo)) {
+            indicesEncontrados.push(indice);
+        }
+    });
+
+    return indicesEncontrados;
+}
+
+function listarPorAutor(autor: string): string[] {
+    const autorPesquisado = autor.toLowerCase();
+
+    return titulos.filter((_, indice) => {
+    const autor = autores[indice];
+    return autor !== undefined && autor.toLowerCase() === autorPesquisado;
+});
+}
+
+console.log("\n===Testando Buscas===");
+
+const termoPesquisado = "p"; 
+const resultados = buscarPorTitulo(termoPesquisado);
+
+console.log(`\nResultados para "${termoPesquisado}":`);
+resultados.forEach(i => {
+    console.log(`[ID: ${i + 1}] - ${titulos[i]}`);
+});
+
+const autorPesquisado = "Platão";
+const livrosDoAutor = listarPorAutor(autorPesquisado);
+
+console.log(`\nLivros de ${autorPesquisado}:`);
+livrosDoAutor.forEach(titulo => {
+    console.log(`- ${titulo}`);
+});
